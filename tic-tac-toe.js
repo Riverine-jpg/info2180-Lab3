@@ -16,8 +16,8 @@ let plays = 0;
             spaces[i].onclick = function() {play(this)};
             spaces[i].onmouseover = function() {hover(this)};
             spaces[i].onmouseout = function() {remhover(this)};
-        
         }
+        document.getElementsByClassName("btn")[0].addEventListener("click", function(){resetter(spaces)});
         
     }
 })(window,document,undefined)
@@ -50,6 +50,9 @@ function play(el){
             case "O":
                 stat.textContent = "Congratulations! O is the Winner!"
                 stat.classList.add("you-won");
+            case "N":
+                stat.textContent = "Congratulations! Nobody Wins!"
+                stat.classList.add("you-won");
         }
 
     }
@@ -59,7 +62,7 @@ function wincheck(){
     var w = "X";
     var win = null;
     var solc = 0;
-    console.log(plays);
+
     for(var i of sol){
         solc = 0;
         for(var j = 0;j < i.length; j++){
@@ -81,6 +84,9 @@ function wincheck(){
             break;
         }
     }
+    if(plays == 9 && win == null){
+        return "N"
+    }
     return win;
 
 }
@@ -94,3 +100,17 @@ function remhover(el){
     el.classList.remove("hover");
 }
 
+
+function resetter(spaces){
+    var size = 9;
+    check = 0;
+    plays = 0;
+    arr = [];
+    for(var i = 0;i<size;i++){
+        spaces[i].setAttribute("class","square");
+        spaces[i].textContent = '';
+    }
+    document.getElementById("status").textContent = "Move your mouse over a square and click to play an X or an O.";
+    document.getElementById("status").classList.remove("you-won");
+
+}
