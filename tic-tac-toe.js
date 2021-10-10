@@ -61,7 +61,7 @@ function play(el){
 }
 
 function wincheck(){
-    var w = "X";
+    var w = null;
     var win = null;
     var solc = 0;
 
