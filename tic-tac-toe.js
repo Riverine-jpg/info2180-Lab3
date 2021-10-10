@@ -12,6 +12,8 @@ let arr = new Array();
             spaces[i].classList.add("square");
             spaces[i].id = i
             spaces[i].onclick = function() {play(this)};
+            spaces[i].onmouseover = function() {hover(this)};
+            spaces[i].onmouseout = function() {remhover(this)};
             console.log(spaces[i]);
         }
         
@@ -32,8 +34,15 @@ function play(el){
                 check = 0;
                 break;
         }
-        console.log("Ah yes bread");
+        
     }
 }
 
+function hover(el){
+    el.classList.add("hover");
+}
+
+function remhover(el){
+    el.classList.remove("hover");
+}
 
