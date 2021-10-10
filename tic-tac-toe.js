@@ -50,9 +50,11 @@ function play(el){
             case "O":
                 stat.textContent = "Congratulations! O is the Winner!"
                 stat.classList.add("you-won");
+                break;
             case "N":
                 stat.textContent = "Congratulations! Nobody Wins!"
                 stat.classList.add("you-won");
+                break;
         }
 
     }
